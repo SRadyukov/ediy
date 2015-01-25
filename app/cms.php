@@ -4,8 +4,11 @@
 //! Front-end processor
 class CMS extends Controller {
 
+
 	//! Display content page
 	function show($f3,$args) {
+		$menuQuery = 'SELECT `wpt`.*, `wt`.* FROM `wp_term_taxonomy` `wpt`, `wp_terms` `wt` where wt.term_id = wpt.term_id and `wpt`.taxonomy = \'category\'';
+
 		$db=$this->db;
 //		$ediy = EdiApi::instance();
 		$page=new DB\SQL\Mapper($db,'wp_posts');
@@ -15,7 +18,7 @@ class CMS extends Controller {
 		$slug=empty($args['slug'])?'':$args['slug'];
 		//$page->load(array('slug=?',$slug));
 		$page->load(array('post_status=?','publish'));
-		$f3->set('menu',$db->exec('SELECT term_id,name, slug, term_group FROM wp_terms ;'));
+		$f3->set('menu',$db->exec($menuQuery));
 		if ($page->dry()) {
 			$f3->error(404);
 			die;
@@ -25,6 +28,20 @@ class CMS extends Controller {
 $f3->set('comments','');
 			$f3->set('inc','page.htm');
 		}
+	}
+
+
+	function post($f3, $args) {
+//		$logger = new Log('test.log');
+		$db=$this->db;
+		$post_id =$args['post'];
+		$menuQuery = 'SELECT `wpt`.*, `wt`.* FROM `wp_term_taxonomy` `wpt`, `wp_terms` `wt` where wt.term_id = wpt.term_id and `wpt`.taxonomy = \'category\'';
+		$f3->set('menu',$db->exec($menuQuery));
+		$f3->set('comments','');
+//		$logger->write('ooops');
+		$f3->set('page', $db->exec('select * from wp_posts where ID=?', $post_id)[0]);
+		$f3->set('inc','post.htm');
+
 	}
 
 	//! Process comment form
