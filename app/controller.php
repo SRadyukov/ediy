@@ -6,6 +6,8 @@ class Controller {
 	protected
 		$db;
 
+
+
 	//! HTTP route pre-processor
 	function beforeroute($f3) {
 		$db=$this->db;

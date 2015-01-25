@@ -1,120 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--<base href="{{ @SCHEME.'://'.@HOST.@BASE.'/' }}" />-->
-	<meta charset="{{ @ENCODING }}" />
-	<title>ediY</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content=" @meta-descrition " />
-	<meta name="keywords" content=" @meta-content " />
-	<!--[if lte IE 8]><script src="/css/ie/html5shiv.js"></script><![endif]-->
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/skel.min.js"></script>
-	<script src="/js/skel-layers.min.js"></script>
-	<script src="/js/init.js"></script>
-	<noscript>
-		<link rel="stylesheet" href="/css/skel.css" />
-		<link rel="stylesheet" href="/css/style.css" />
-		<link rel="stylesheet" href="/css/style-desktop.css" />
-		<link rel="stylesheet" href="/css/style-wide.css" />
-	</noscript>
-	<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+    <!--<base href="{{ @SCHEME.'://'.@HOST.@BASE.'/' }}" />-->
+    <meta charset="{{ @ENCODING }}"/>
+    <title>ediY</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=" @meta-descrition "/>
+    <meta name="keywords" content=" @meta-content "/>
+    <!--[if lte IE 8]>
+    <script src="/css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.jcarousel-core.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css"/>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="/css/style-desktop.css"/>
+        <link rel="stylesheet" href="/css/style-wide.css"/>
+    </noscript>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/css/ie/v8.css"/><![endif]-->
 </head>
-	<body class="left-sidebar">
-		<div class="toolbar desktop">
-	<div class="wrapper">
-		<ul class="whether">
-			<li>
-				<span>Saint-P</span>
-				<i class="fa fa-chevron-down"></i>
-			</li>
-			<li>
-				<span>&ndash; 5&deg;C</span>
-				<i class="fa fa-cloud"></i>
-			</li>
-		</ul>
-		<ul class="kurs">
-			<!--<li>-->
-			<!--<i class="fa fa-tint"></i>-->
-			<!--<label><span>48.60</span><i class="fa fa-dollar"></i></label>-->
-			<!--</li>-->
-			<li>
-				<i class="fa fa-dollar"></i>
-				<label><span>65.76</span> <i class="fa fa-angle-down"></i></label>
-			</li>
-			<li>
-				<i class="fa fa-euro"></i>
-				<label><span>76.15</span> <i class="fa fa-angle-up"></i></label>
-			</li>
-		</ul>
-	</div>
-</div>
+<body class="left-sidebar">
+
+<include href="toolbar.html"/>
 
 <div id="wrapper">
-<div id="content">
-	test repeat menu
-	<!-- Posts -->
-	<section class="posts">
-		<div class="inner">
-			<nav>
-				<ul class="post-nav">
-				<repeat group="{{ @menu }} " value="{{ @menu_itm }}">
-					<li><a href="{{ @menu_itm.slug }}">{{ @menu_itm.name }}</a></li>
-				</repeat>
-				</ul>
-				</nav>
-		</div>
-	</section>
+    <div id="content">
 
-	<div class="wrapper">
-		<include href="{{ @inc }}" />
-	</div>
+        <include href="section_main.html"/>
+
+        <section class="posts">
+            <div class="inner">
+                <nav>
+                    <ul class="post-nav">
+                        <repeat group="{{ @menu }} " value="{{ @menu_itm }}">
+                            <li><a href="{{ @menu_itm.slug }}">{{ @menu_itm.name }}</a></li>
+                        </repeat>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <div class="wrapper">
+            <include href="{{ @inc }}"/>
+        </div>
+    </div>
+
+    <include href="sidebar.html"/>
 </div>
-
-	<div id="sidebar" class="sidebar">
-
-		<a class="logo" href="#">
-			<i class="fa fa-paper-plane"></i>
-			<span>edi<span>Y</span></span>
-		</a>
-
-		<!-- Search -->
-		<section class="box search">
-			<form method="post" action="#">
-				<input type="text" class="text" name="search" placeholder="Найти&hellip;" />
-			</form>
-		</section>
-
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<repeat group="{{ @menu }} " value="{{ @menu_itm }}">
-				<li class="active"><a href="#">
-					<i class="fa fa-newspaper-o"></i>
-					<span>{{ @menu_itm.name }}</span>
-				</a></li>
-				</repeat>
-				<li><a href="#">
-					<i class="fa fa-quote-right"></i>
-					<span>Статьи</span>
-				</a></li>
-				<li><a href="#">
-					<i class="fa fa-bar-chart"></i>
-					<span>Аналитика</span>
-				</a></li>
-				<li><a href="#">
-					<i class="fa fa-group"></i>
-					<span>О ресурсе</span>
-				</a></li>
-				<li><a href="#">
-					<i class="fa fa-envelope"></i>
-					<span>Контакты</span>
-				</a></li>
-			</ul>
-		</nav>
-</div>
-
-	</div>
 
 </body>
 </html>

@@ -1,0 +1,43 @@
+
+<div id="sidebar" class="sidebar">
+
+    <a class="logo" href="#">
+        <i class="fa fa-paper-plane"></i>
+        <span>edi<span>Y</span></span>
+    </a>
+
+    <!-- Search -->
+    <section class="box search">
+        <form method="post" action="#">
+            <input type="text" class="text" name="search" placeholder="Найти&hellip;"/>
+        </form>
+    </section>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <repeat group="{{ @menu }} " value="{{ @menu_itm }}">
+                <li class="active"><a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span>{{ @menu_itm.name }}</span>
+                </a></li>
+            </repeat>
+            <li><a href="#">
+                <i class="fa fa-quote-right"></i>
+                <span>Статьи</span>
+            </a></li>
+            <li><a href="#">
+                <i class="fa fa-bar-chart"></i>
+                <span>Аналитика</span>
+            </a></li>
+            <li><a href="#">
+                <i class="fa fa-group"></i>
+                <span>О ресурсе</span>
+            </a></li>
+            <li><a href="#">
+                <i class="fa fa-envelope"></i>
+                <span>Контакты</span>
+            </a></li>
+        </ul>
+    </nav>
+</div>

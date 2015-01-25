@@ -11,20 +11,34 @@ class CMS extends Controller {
 
 		$db=$this->db;
 //		$ediy = EdiApi::instance();
-		$page=new DB\SQL\Mapper($db,'wp_posts');
+		$posts=new DB\SQL\Mapper($db,'wp_posts');
+
+		$main_posts=$posts->find(array('post_status=? and post_type=?','publish', 'post'),
+			array(
+				'order'=>'ID DESC',
+				'offset'=>0,
+				'limit'=>1
+			));
 //		$terms = new DB\SQL\Mapper($db, 'wp_terms');
 //		$terms->load();
 //		$terms->copyto('menu');
 		$slug=empty($args['slug'])?'':$args['slug'];
 		//$page->load(array('slug=?',$slug));
-		$page->load(array('post_status=?','publish'));
+		$posts->load(array('post_status=? and post_type=?','publish', 'post'),
+			array(
+				'order'=>'ID DESC',
+				'offset'=>0,
+				'limit'=>1
+			));
+		//$main_posts->load(array('post_status=?','publish', 'ORDER BY ID desc'));
 		$f3->set('menu',$db->exec($menuQuery));
-		if ($page->dry()) {
+		if ($posts->dry()) {
 			$f3->error(404);
 			die;
 		}
 		else {
-			$page->copyto('page');
+			$posts->copyto('page');
+			$f3->set('mainposts', $main_posts);
 $f3->set('comments','');
 			$f3->set('inc','page.htm');
 		}
@@ -38,6 +52,14 @@ $f3->set('comments','');
 		$menuQuery = 'SELECT `wpt`.*, `wt`.* FROM `wp_term_taxonomy` `wpt`, `wp_terms` `wt` where wt.term_id = wpt.term_id and `wpt`.taxonomy = \'category\'';
 		$f3->set('menu',$db->exec($menuQuery));
 		$f3->set('comments','');
+		$posts=new DB\SQL\Mapper($db,'wp_posts');
+		$main_posts=$posts->find(array('post_status=? and post_type=?','publish', 'post'),
+			array(
+				'order'=>'ID DESC',
+				'offset'=>0,
+				'limit'=>1
+			));
+		$f3->set('mainposts', $main_posts);
 //		$logger->write('ooops');
 		$f3->set('page', $db->exec('select * from wp_posts where ID=?', $post_id)[0]);
 		$f3->set('inc','post.htm');

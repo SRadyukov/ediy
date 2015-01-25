@@ -89,4 +89,12 @@
 
 	});
 
+
+
+	$(function(){
+		$('.main-carousel').jcarousel({
+			list: '.slider'
+		});
+	});
+
 })(jQuery);
