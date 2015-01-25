@@ -1,0 +1,125 @@
+
+/* Basic                                                                         */
+/* ----------------------------------------------------------------------------- */
+
+body {height: 100%; }
+
+body, input, textarea, select {line-height: 1.75em; }
+
+h2 {font-size: 1.2em;}
+
+h3, h4, h5, h6 {font-size: 1em;}
+
+/* Button */
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button {
+	display: inline-block;
+	padding: 0.5em 2em 0.5em 2em;
+}
+
+input[type="button"].small,
+input[type="submit"].small,
+input[type="reset"].small,
+.button.small {
+	font-size: 0.85em;
+	padding: 0.35em 1.5em 0.35em 1.5em;
+}
+
+input[type="button"].big,
+input[type="submit"].big,
+input[type="reset"].big,
+.button.big {
+	font-size: 1.25em;
+	padding: 0.75em 2em 0.75em 2em;
+}
+
+input[type="button"].huge,
+input[type="submit"].huge,
+input[type="reset"].huge,
+.button.huge {
+	font-size: 1.5em;
+	padding: 0.75em 2em 0.75em 2em;
+}
+
+/* Pagination */
+
+.pagination {padding: 3em 0 0 0;}
+
+.pagination .pages {}
+
+.pagination .previous {margin-right: 0.6em;}
+
+.pagination .next {margin-left: 0.2em;}
+
+.pagination .pages a {
+	width: 2.75em;
+	height: 2.75em;
+	line-height: 2.75em;
+}
+
+.pagination .button {
+	height: 2.75em;
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 2.75em;
+}
+
+/* Post */
+
+.post-nav {
+	border-bottom: 2px solid #eee;
+	display: block;
+	font-size: 0.8;
+	font-weight: 300;
+	margin: 0;
+	padding-bottom: .5em;
+}
+
+.post-nav li {
+	display: inline-block;
+	padding: 0 .5em;
+}
+
+.post-nav li:first-child {padding-left: 0;}
+
+.post-nav a {text-decoration: none;}
+
+.post-nav a:not(.active) {border-bottom: 1px dashed;}
+
+.post-nav a.active {color: #999;}
+
+.posts .post {
+	float: left;
+	width: 35%;
+	font-size: .8em;
+	line-height: 150%;
+}
+
+.post header {margin: 0 0 .5em;}
+
+.post h3 {
+	font-size: 1.5em;
+	line-height: 1.3em;
+}
+
+/* Content                                                                       */
+/* ----------------------------------------------------------------------------- */
+
+.inner {padding: 1em;}
+
+/* Sidebar                                                                       */
+/* ----------------------------------------------------------------------------- */
+
+#sidebar {
+	position: absolute;
+	top: 0;
+	padding: 3em 1.35em 1em 1.15em;
+	width: 14em; /* = whatever you want */
+	background: #364050;
+}
+
+body.left-sidebar #sidebar  {left: 0;}
+body.right-sidebar #sidebar {right: 0;}

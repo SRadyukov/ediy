@@ -1,0 +1,23 @@
+/* Basic                                                                         */
+/* ----------------------------------------------------------------------------- */
+
+body {min-width: 1200px;}
+
+body, input, textarea, select {font-size: 12pt;}
+
+/* Box */
+
+
+/* Content                                                                       */
+/* ----------------------------------------------------------------------------- */
+
+.toolbar {padding: .5em 4.5em;left: 14em;}
+#content {padding: 6em 4em;}
+
+/* Sidebar                                                                       */
+/* ----------------------------------------------------------------------------- */
+
+#sidebar {width: 14em;}
+
+body.left-sidebar #content  {margin-left: 14em;}
+body.right-sidebar #content {margin-right: 14em;}
