@@ -3,8 +3,7 @@
 
 //! Front-end processor
 class CMS extends Controller {
-
-
+	
 	//! Display content page
 	function show($f3,$args) {
 		$menuQuery = 'SELECT `wpt`.*, `wt`.* FROM `wp_term_taxonomy` `wpt`, `wp_terms` `wt` where wt.term_id = wpt.term_id and `wpt`.taxonomy = \'category\'';
@@ -19,6 +18,9 @@ class CMS extends Controller {
 				'offset'=>0,
 				'limit'=>1
 			));
+
+
+
 //		$terms = new DB\SQL\Mapper($db, 'wp_terms');
 //		$terms->load();
 //		$terms->copyto('menu');
@@ -32,6 +34,7 @@ class CMS extends Controller {
 			));
 		//$main_posts->load(array('post_status=?','publish', 'ORDER BY ID desc'));
 		$f3->set('menu',$db->exec($menuQuery));
+
 		if ($posts->dry()) {
 			$f3->error(404);
 			die;
@@ -39,11 +42,10 @@ class CMS extends Controller {
 		else {
 			$posts->copyto('page');
 			$f3->set('mainposts', $main_posts);
-$f3->set('comments','');
+			$f3->set('comments','');
 			$f3->set('inc','page.htm');
 		}
 	}
-
 
 	function post($f3, $args) {
 //		$logger = new Log('test.log');

@@ -1,25 +1,22 @@
 <section class="main main-carousel" >
 
     <ul class="slider ">
-        <repeat group="{{ @mainposts }}" value="{{ @p }}">
+
+        <repeat group="{{ @mainposts['subset'] }}" value="{{ @p }}">
         <li>
-
-
-                <article>
-                    <div class="mask">
-                        <div>
-                            <header>
-                                <h2><a href="/post/{{ @p.ID }}">{{ @p.post_title }}</a></h2>
-                            </header>
-                            <p>
-                                {{ @p.post_content }}
-                            </p>
-                        </div>
+            <article>
+                <div class="mask">
+                    <div>
+                        <header>
+                            <h2><a href="/post/{{ @p.ID }}">{{ @p.post_title }}</a></h2>
+                        </header>
+                        <p>
+                            {{ @p.post_content }}
+                        </p>
                     </div>
-                </article>
-
+                </div>
+            </article>
         </li>
-
         </repeat>
 
     </ul>

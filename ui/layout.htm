@@ -25,32 +25,18 @@
 </head>
 <body class="left-sidebar">
 
-<include href="toolbar.html"/>
+    <include href="toolbar.html"/>
 
-<div id="wrapper">
-    <div id="content">
+    <div id="wrapper">
+        <div id="content">
 
-        <include href="section_main.html"/>
+            <include href="{{ @content_template }}" />
 
-        <section class="posts">
-            <div class="inner">
-                <nav>
-                    <ul class="post-nav">
-                        <repeat group="{{ @menu }} " value="{{ @menu_itm }}">
-                            <li><a href="{{ @menu_itm.slug }}">{{ @menu_itm.name }}</a></li>
-                        </repeat>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-
-        <div class="wrapper">
-            <include href="{{ @inc }}"/>
         </div>
+        <include href="sidebar.html"/>
     </div>
 
-    <include href="sidebar.html"/>
-</div>
+
 
 </body>
 </html>
